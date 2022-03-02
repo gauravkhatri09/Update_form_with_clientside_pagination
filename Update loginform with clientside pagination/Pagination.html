@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+    <head>
+      <title>Data table pagination</title>
+      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+        integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+        <script type="text/javascript" charset="utf8"
+        src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.2.min.js"></script>
+    <script type="text/javascript" charset="utf8"
+        src="http://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.4/jquery.dataTables.min.js"></script>
+        <link rel="stylesheet" type="text/css"
+        href="http://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.4/css/jquery.dataTables.css">
+        <style>
+          .mb-3 {
+            width: 100px;
+            height: 100px;
+        }
+        .image {
+          display: flex;
+            justify-content: center;
+        }
+        #col3 {
+            display: flex;
+            justify-content: right;
+            /* height: 40px; */
+        }
+        </style>
+    </head>
+    <body>
+      <div class="containere">
+        <div class="row">
+          <div class="col">
+
+          </div>
+          <div class="col">
+            <div class="image">
+              <img class="mb-3" src="react-logo.png"><br>
+          </div>
+          </div>
+          <div class="col" id="col3">
+            <a href="file:///E:/Gaurav/Html/Login_Form.html"><button class="btn btn-primary btn-lg btn-block">LOgOut</button></a>
+          </div>
+
+        </div>
+        <div class="row">
+          <div class="col">
+            <b><a href="file:///E:/Gaurav/Javascript/Server_side_pagination/Tablemanager_formate.html">Click Here to view table manager formate</a></b><br>
+            <b><a href="file:///E:/Gaurav/Javascript/Server_side_pagination/Demo2_officeapi.html">Click Here to Go to First Page</a></b>
+          </div>
+          <div class="col">
+            <div class="image">
+              <h1>Music Subscriber</h1>
+          </div>
+          </div>
+          <div class="col">
+
+          </div>
+
+        </div>
+
+      </div>
+        <table id="example">
+            <thead>
+              <tr><th class="site_name">Name</th><th>Url </th><th>Type</th><th>Last modified</th></tr>
+            </thead>
+            <tbody>
+            </tbody>
+          </table>
+          <script>
+              $("#example").dataTable({
+          "aaData":[
+            ["Sitepoint","https://www.sitepoint.com","Blog","2013-10-15 10:30:00"],
+            ["Flippa","http://flippa.com","Marketplace","null"],
+            ["99designs","http://99designs.com","Marketplace","null"],
+            ["Learnable","http://learnable.com","Online courses","null"],
+            ["Rubysource","http://rubysource.com","Blog","2013-01-10 12:00:00"]
+          ],
+          "aoColumnDefs":[{
+                "sTitle":"Site name"
+              , "aTargets": [ "site_name" ]
+          },{
+                "aTargets": [ 1 ]
+              , "bSortable": false
+              , "mRender": function ( url, type, full )  {
+                  return  '<a href="'+url+'">' + url + '</a>';
+              }
+          },{
+                "aTargets":[ 3 ]
+              , "sType": "date"
+              , "mRender": function(date, type, full) {
+                  return (full[2] == "Blog") 
+                            ? new Date(date).toDateString()
+                            : "N/A" ;
+              }  
+          }]
+        });
+          </script>
+    </body>
+</html>

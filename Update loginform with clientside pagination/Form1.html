@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>
+        Form
+    </title>
+
+    <link rel="icon" type="image/jpg" href="synsoft.jpg">
+    <link rel="stylesheet" href="Form.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
+
+</head>
+
+<body>
+    <section style="background-image: url('education.jpg'); background-repeat: no-repeat; background-size: cover;">
+        <marquee scrollAmount="10" , direction="right">
+            <h1>Synsoft Education</h1>
+        </marquee>
+        <div class="container">
+            <div class="row">
+                <div class="m-4" style="padding-left: 50px;">
+                    <form id="basic-form" action="" method="post">
+                      
+                        <div class="mb-3">
+                            <h2>EDUCATION APPOINTMENT FORM</h2>
+                        </div>
+                        <div class="mb-2">
+                            <label class="form-label" for="inputFname" id="fname"> First Name <span>(required, at least
+                                    3
+                                    characters)</label>
+                            <input type="text" class="form-control" id="inputFname" name="inputFname"
+                                placeholder="Your Name">
+                        </div>
+                        <div class="mb-2">
+                            <label class="form-label" for="inputLname">Last Name <span>(required, at least 3
+                                    characters)</label>
+                            <input type="text" class="form-control" id="inputLname" name="inputLname"
+                                placeholder="Your Name">
+                        </div>
+                        <div class="mb-2">
+                            <div class="form-radio">
+                                <label class="form-label" for="inputGender" id="inputGender">Gender </label><br>
+                                <input type="radio" id="male" name="gender" value="Male">
+                                <label for="male">Male</label>
+                                <input type="radio" id="female" name="gender" value="Female">
+                                <label for="female">Female</label>
+                                <input type="radio" id="other" name="gender" value="Other">
+                                <label for="other">Other</label>
+                            </div>
+                            <label for="gender" class="error" style="display:none;">Please choose one.</label>
+                        </div>
+                        <div class="mb-2">
+                            <label class="form-label" for="inputEmail">Email <span>(required)</span></label>
+                            <input type="email" class="form-control" id="inputEmail" name="inputEmail"
+                                placeholder="Email">
+                        </div>
+                        <div class="mb-2">
+                            <label class="form-label" for="inputDate">Date Of Birth</label>
+                            <input type="date" class="form-control" id="inputDate" name="inputDate" placeholder="DOB"
+                                min="1990-01-31" max="2022-01-01">
+                        </div>
+                        <div class="mb-2">
+                            <label class="form-label" for="inputText">Qualification</label><br>
+                            <select name="course" id="course">
+                                <option></option>
+                                <option>B.E./B.TECH</option>
+                                <option>B.C.A</option>
+                                <option>B.S.C.</option>
+                                <option>M.E./M.TECH</option>
+                                <option>M.C.A.</option>
+                                <option>M.S.C.</option>
+                                <option>M.E./M.TECH</option>
+                            </select>
+                        </div>
+                        <div class="mb-2">
+                            <label class="form-label" for="inputPhone">Mobile Number</label>
+                            <input type="tel" maxlength="10" class="form-control" name="inputPhone" id="inputPhone"
+                                placeholder="Mobile Number">
+                        </div>
+                        <div class="mb-2">
+                            <label class="form-label" for="inputText">Course type</label><br>
+                            <select name="select_course" id="select_course">
+                                <option></option>
+                                <option>React js</option>
+                                <option>Angular</option>
+                                <option>Python</option>
+                                <option>Node js</option>
+                                <option>Asp.net</option>
+                                <option>java</option>
+                                <option>Ios Development</option>
+                            </select>
+                        </div>
+                        <div class="mb-2">
+                            <label class="form-label" for="inputText">Class Time</label><br>
+                            <select name="class_time" id="class_time">
+                                <option></option>
+                                <option>10am to 12pm</option>
+                                <option>12pm to 2pm</option>
+                                <option>2pm to 4pm</option>
+                                <option>4pm to 6pm</option>
+                            </select>
+                        </div>
+                        <div class="mb-2">
+                            <div class="form-check">
+                                <input class="form-check-input" name="checkbox" type="checkbox" id="checkRemember">
+                                <label class="form-check-label" for="checkRemember">I agree Terms and
+                                    conditions</a> </label>
+                            </div>
+                        </div>
+                        <div class="mb-2">
+                            <button type="submit" class="btn btn-primary" onclick="myFunction()">Update
+                                information</button>
+                        </div>
+
+                    </form>
+                    <div class="Toastdata" id="snackbar">Data Updated Successfully</div>
+                    <button class="btn btn-primary"><a class="logout"
+                            href="file:///E:/Gaurav/Html/Login_Form.html">logout</a></button>&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <button class="btn btn-primary"><a class="logout"
+                            href="file:///E:/Gaurav/Javascript/Server_side_pagination/Demo2_officeapi.html">Back</a></button>
+                </div>
+            </div>
+        </div>
+    </section>
+    <script>
+       
+        $(document).ready(function () {
+            
+            $("#basic-form").validate({
+                rules: {
+                    inputFname: {
+                        required: true,
+                        minlength: 3,
+                        maxlength: 50,
+                    },
+                    inputLname: {
+                        required: true,
+                        minlength: 3,
+                        maxlength: 50,
+                    },
+                    gender: {
+                        required: true,
+                        minlength: 1,
+                    },
+
+                    inputEmail: {
+                        required: true,
+                    },
+                    inputDate: {
+                        required: true,
+                    },
+                    course: {
+                        required: true,
+                    },
+                    select_course: {
+                        required: true,
+                    },
+                    inputPhone: {
+                        required: true,
+                        minlength: 10,
+                        maxlength: 10,
+                    },
+                    class_time: {
+                        required: true,
+                    },
+                    checkbox: {
+                        required: true,
+                        minlength: 1,
+                    },
+                },
+                messages: {
+                    inputFname: {
+                        required: "Please enter Your First name",
+                        minlength: "Name should be at least 3 Characters"
+                    },
+                    inputLname: {
+                        required: "Please enter Your last name",
+                        minlength: "Last name should be at least 3 characters"
+                    },
+                    gender: {
+                        required: "Please select your Gender",
+                    },
+                    inputEmail: {
+                        required: "Enter Your Email",
+                        email: "Enter Valid Email"
+                    },
+                    inputDate: {
+                        required: "Please enter your Date of birth",
+                    },
+                    course: {
+                        required: "please select course",
+                    },
+                    select_course: {
+                        required: "Select Course type",
+                    },
+                    inputPhone: {
+                        required: "Please Enter Your Phone Number",
+                        minlength: "Enter 10 digit Mobile Number"
+                    },
+                    class_time: {
+                        required: "Please select Suitable time for class",
+                    },
+                    checkbox: {
+                        required: "You need To fill this field"
+                    }
+                }
+            });
+
+            console.log("hello");
+        });
+
+        function myFunction() {
+            // Get the snackbar DIV
+            var x = document.getElementById("snackbar");
+
+            // Add the "show" class to DIV
+            x.className = "show";
+
+            // After 3 seconds, remove the show class from DIV
+            setTimeout(function () { x.className = x.className.replace("show", ""); }, 3000);
+        }
+
+        if (sessionStorage.getItem("access_token") == null) {
+            window.location.href = "Login_Form.html"; //these two line means if token access == null then return to login form
+        }
+        else {
+            var userId = sessionStorage.getItem("userId"); // this line means user id is stored in userId variable using
+            //sessionStorage.getItem() method.
+            var token = sessionStorage.getItem("access_token"); //this line means accessed token we stored in token variable
+            //using sessionStorage.getItem() method. which prevents token expire problem
+            $.ajax({
+                url: 'http://192.168.0.67/NetCoreAPI/api/home/user?userId=' + userId,
+                type: 'GET',
+                dataType: 'json',
+                contentType: "application/json; charset=utf-8",
+                beforeSend: function (xhr) {
+                    xhr.setRequestHeader("Authorization", "bearer " + token);
+                },
+                success: function (data, textStatus, xhr) {
+                    console.log(data);
+                    const obj = JSON.parse(JSON.stringify(data));
+                    $('#inputFname').val(obj.data.firstName);
+                    $('#inputLname').val(obj.data.lastName);
+                    $('#inputEmail').val((obj.data.emailID));
+                    $('#inputPhone').val(obj.data.mobileNo);
+                },
+                error: function (xhr, textStatus, errorThrown) {
+                    console.log('Error in Database');
+                    console.log("Error:" + xhr.responseText);
+                }
+            });
+        }
+        $("#basic-form").submit(function (event) {
+            if ($("#basic-form").valid()) {
+
+                var firstName = $("#inputFname").val();
+                var lastName = $("#inputLname").val();
+                var email = $("#inputEmail").val();
+                var mobileNo = $("#inputPhone").val();
+
+                $.ajax({
+                    url: 'http://192.168.0.67/NetCoreAPI/api/home/updateuser/' + userId,
+                    type: 'PATCH',
+                    dataType: 'json',
+                    contentType: "application/json; charset=utf-8",
+
+                    headers: {
+                        Authorization: 'Bearer ' + token,
+                    },
+
+                    data: JSON.stringify({
+                        "firstName": firstName,
+                        "lastName": lastName,
+                        "email": email,
+                        "mobileNo": mobileNo,
+                        "userName": "manoj@gmail.com"
+
+                    }),
+                    success: function (data, textStatus, xhr) {
+                        console.log("submitdata", data);
+
+                        // alert('You Have sign in successfully')
+                        // window.location.href = "Login_Form.html";
+                    },
+                    error: function (xhr, textStatus, errorThrown) {
+                        console.log('Error in Database');
+                        console.log("error " + xhr.responseText);
+                    }
+                });
+                console.log('HELLO')
+                event.preventDefault();
+            }
+        })   
+    </script>
+</body>
+
+</html>
